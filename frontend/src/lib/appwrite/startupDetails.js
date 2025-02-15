@@ -17,6 +17,17 @@ export class startupDetails {
     return result;
   }
 
+  async addStartupFounder(data) {
+    const result = await this.databases.createDocument(
+      appwriteConf.startupDB,
+      appwriteConf.addStartupFounder,
+      ID.unique(),
+      data
+    );
+
+    return result;
+  }
+  
   async getAllStartups(query = null) {
     const buildQuery = [];
     if (query) {

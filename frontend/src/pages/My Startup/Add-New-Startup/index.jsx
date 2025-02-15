@@ -1,9 +1,12 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { storageServices } from "../../../lib/appwrite/storage.appwrite";
+import { startupDetailsServices } from "../../../lib/appwrite/startupDetails";
 
 const AddStartup = () => {
   const navigate = useNavigate();
   const [step, setStep] = useState(1);
+  const [loading, setLoading] = useState(false);
   const totalSteps = 7;
   const industries = [
     "Tech",
@@ -35,24 +38,25 @@ const AddStartup = () => {
 
   const [formData, setFormData] = useState({
     // Basic Information
-    name: "",
-    tagline: "",
-    description: "",
-    logo: null,
-    foundedYear: new Date().getFullYear(),
-    location: "",
+    name: "", // string - 100char
+    tagline: "", //string - 100 char
+    description: "", //string - 500 char
+    logo: null, // file
+    foundedYear: new Date().getFullYear(), // string
+    location: "", // string
 
     // Business Details
-    industry: "",
-    businessModel: "",
-    stage: "",
-    usp: "",
-    marketSize: "",
+    industry: "", // string
+    businessModel: "", // string
+    //
+    stage: "", // string 50 char
+    usp: "", // string 100 char
+    marketSize: "", // numerics in lakhs
     competitors: "",
 
-    // Financials
-    fundingGoal: "",
-    valuation: "",
+    // Financials // numbrs
+    fundingGoal: "", // in lakhs
+    valuation: "", // in carors
     revenue: "",
     equityOffered: "",
 
@@ -60,30 +64,30 @@ const AddStartup = () => {
     productName: "",
     productFeatures: "",
     techStack: "",
-    targetAudience: "",
-    demoVideo: "",
+    targetAudience: "", // string
+    demoVideo: "", // url
 
-    // Team
-    founders: [{ name: "", role: "", linkedin: "" }],
-    teamSize: "",
+    // TODO : Implement founder table
+    founders: [{ name: "", role: "", linkedin: "" }], //
+    teamSize: "", // number
     hiring: false,
 
     // Traction
     keyMetrics: "",
-    customers: "",
+    customers: "", // number
     partnerships: "",
 
     // Contact
     website: "",
     email: "",
-    phone: "",
+    phone: "", // string
     linkedin: "",
     twitter: "",
 
     // Documents
-    pitchDeck: null,
+    pitchDeck: null, // file
     financialProjections: null,
-    productImages: [],
+    productImages: [], // string[]
   });
 
   const handleChange = (e) => {
@@ -121,7 +125,40 @@ const AddStartup = () => {
   const prevStep = () => setStep((prev) => prev - 1);
 
   const handleSubmit = async () => {
+    setLoading(true);
     console.log("Submitting:", formData);
+
+    try {
+      const logo = await storageServices.uploadImage(formData.logo);
+      const photos = await Promise.all(
+        formData.photos.map(async (photo) => {
+          return await storageServices.uploadImage(photo);
+        })
+      );
+      const pitchDeck = await storageServices.uploadVideo(formData.pitchDeck);
+
+      const { founders, ...restFormData } = formData;
+
+      restFormData.pitchDeck = pitchDeck;
+      restFormData.logo = logo;
+      restFormData.photos = photos;
+      
+      const startupDetails = await startupDetailsServices.addStartup(
+        restFormData
+      );
+
+      await Promise.all(
+        founders.map(async (founder) => {
+          await startupDetailsServices.addStartupFounder({
+            ...founder,
+            startupId: startupDetails?.$id,
+          });
+        })
+      );
+    } catch (error) {
+      throw new Error();
+    }
+
     alert("Startup added successfully!");
     navigate("/startups");
   };
