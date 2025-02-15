@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 const AddStartup = () => {
   const navigate = useNavigate();
   const [step, setStep] = useState(1);
-  const totalSteps = 7;
+  const totalSteps = 9;
   const industries = [
     "Tech",
     "Fintech",
@@ -84,6 +84,14 @@ const AddStartup = () => {
     pitchDeck: null,
     financialProjections: null,
     productImages: [],
+
+    // Legal Documents
+    wordmarkTrademark: null,
+    companyRegistration: null,
+    shareholdersAgreement: null,
+    partnershipAgreement: null,
+    termsOfService: null,
+    privacyPolicy: null,
   });
 
   const handleChange = (e) => {
@@ -724,12 +732,126 @@ const AddStartup = () => {
             </div>
           </div>
         )}
+
+        {step === 8 && (
+          <div className="space-y-4">
+            <h2 className="text-2xl font-semibold mb-4">Legal Documents</h2>
+            <div className="grid grid-cols-1 gap-4">
+              <div>
+                <label className="block mb-2">Wordmark Trademark *</label>
+                <input
+                  type="file"
+                  name="wordmarkTrademark"
+                  onChange={handleFileUpload}
+                  className="block w-full text-sm text-gray-400 file:mr-4 file:py-2 file:px-4 file:rounded file:border-0 file:text-sm file:font-semibold file:bg-blue-500 file:text-white hover:file:bg-blue-600"
+                />
+                {formData.wordmarkTrademark && (
+                  <span className="text-sm text-gray-400 ml-2">
+                    {formData.wordmarkTrademark.name}
+                  </span>
+                )}
+              </div>
+
+              <div>
+                <label className="block mb-2">
+                  Company Registration Certificate *
+                </label>
+                <input
+                  type="file"
+                  name="companyRegistration"
+                  onChange={handleFileUpload}
+                  className="block w-full text-sm text-gray-400 file:mr-4 file:py-2 file:px-4 file:rounded file:border-0 file:text-sm file:font-semibold file:bg-blue-500 file:text-white hover:file:bg-blue-600"
+                />
+              </div>
+
+              <div>
+                <label className="block mb-2">Shareholders Agreement *</label>
+                <input
+                  type="file"
+                  name="shareholdersAgreement"
+                  onChange={handleFileUpload}
+                  className="block w-full text-sm text-gray-400 file:mr-4 file:py-2 file:px-4 file:rounded file:border-0 file:text-sm file:font-semibold file:bg-blue-500 file:text-white hover:file:bg-blue-600"
+                />
+              </div>
+
+              <div>
+                <label className="block mb-2">
+                  Partnership/Co-founder Agreement *
+                </label>
+                <input
+                  type="file"
+                  name="partnershipAgreement"
+                  onChange={handleFileUpload}
+                  className="block w-full text-sm text-gray-400 file:mr-4 file:py-2 file:px-4 file:rounded file:border-0 file:text-sm file:font-semibold file:bg-blue-500 file:text-white hover:file:bg-blue-600"
+                />
+              </div>
+
+              <div>
+                <label className="block mb-2">Terms of Service</label>
+                <input
+                  type="file"
+                  name="termsOfService"
+                  onChange={handleFileUpload}
+                  className="block w-full text-sm text-gray-400 file:mr-4 file:py-2 file:px-4 file:rounded file:border-0 file:text-sm file:font-semibold file:bg-blue-500 file:text-white hover:file:bg-blue-600"
+                />
+              </div>
+
+              <div>
+                <label className="block mb-2">Privacy Policy</label>
+                <input
+                  type="file"
+                  name="privacyPolicy"
+                  onChange={handleFileUpload}
+                  className="block w-full text-sm text-gray-400 file:mr-4 file:py-2 file:px-4 file:rounded file:border-0 file:text-sm file:font-semibold file:bg-blue-500 file:text-white hover:file:bg-blue-600"
+                />
+              </div>
+            </div>
+            <div className="flex justify-between mt-6">
+              <button
+                onClick={prevStep}
+                className="bg-gray-600 px-6 py-2 rounded hover:bg-gray-700"
+              >
+                ← Back
+              </button>
+              <button
+                onClick={nextStep}
+                className="bg-blue-500 px-6 py-2 rounded hover:bg-blue-600"
+              >
+                Next →
+              </button>
+            </div>
+          </div>
+        )}
+
         {step === totalSteps && (
           <div className="space-y-6">
             <h2 className="text-2xl font-semibold mb-4">Review & Submit</h2>
             <div className="bg-gray-700 p-4 rounded-lg">
-              <h3 className="text-lg font-semibold mb-4">Summary</h3>
-              {/* Add review summary components here */}
+              <h3 className="text-lg font-semibold mb-4">
+                Legal Documents Summary
+              </h3>
+              <div className="space-y-2">
+                {formData.wordmarkTrademark && (
+                  <p>Wordmark Trademark: {formData.wordmarkTrademark.name}</p>
+                )}
+                {formData.companyRegistration && (
+                  <p>
+                    Company Registration: {formData.companyRegistration.name}
+                  </p>
+                )}
+                {formData.shareholdersAgreement && (
+                  <p>
+                    Shareholders Agreement:{" "}
+                    {formData.shareholdersAgreement.name}
+                  </p>
+                )}
+                {formData.partnershipAgreement && (
+                  <p>
+                    Partnership Agreement: {formData.partnershipAgreement.name}
+                  </p>
+                )}
+                {/* Add other document previews similarly */}
+              </div>
             </div>
             <div className="flex justify-between">
               <button
