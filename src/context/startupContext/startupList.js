@@ -19,5 +19,5 @@ const StartupListProvider = ({children}) => {
         </startupListContext.Provider>
     );
 }
-
+console.log("Hello I Am Vineet")
 export {startupListContext, StartupListProvider};
