@@ -19,5 +19,5 @@ const StartupListProvider = ({children}) => {
         </startupListContext.Provider>
     );
 }
-
+//edited by nitin
 export {startupListContext, StartupListProvider};

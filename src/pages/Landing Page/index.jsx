@@ -1,4 +1,5 @@
 import { useState } from "react";
+// import 
 
 const LandingPage = () => {
   return (
@@ -30,7 +31,7 @@ const LandingPage = () => {
           Featured Startups
         </h3>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          
+
           <div className="bg-gray-800 p-6 rounded-lg">
             <h4 className="text-xl font-semibold">TechNova</h4>
             <p className="text-gray-400">
