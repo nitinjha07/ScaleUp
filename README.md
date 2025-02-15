@@ -12,7 +12,7 @@ With **ScaleUp**, startup founders can pitch their ideas, gain visibility, and s
 **Team Code:** CK007  
 
 ### 🤝 Team Members  
-- 🔹 **Akash Gupta**  
-- 🔹 **Akash Singh**  
-- 🔹 **Vineet Raj**  
-- 🔹 **Nitin Jha**  
+- 🔹 **Akash Gupta** ([skygupta07](https://github.com/skygupta07))  
+- 🔹 **Akash Singh** ([amoeba-singh](https://github.com/amoeba-singh))  
+- 🔹 **Vineet Raj** ([mrvineetraj](https://github.com/mrvineetraj))  
+- 🔹 **Nitin Jha** ([nitinjha07](https://github.com/nitinjha07))  
