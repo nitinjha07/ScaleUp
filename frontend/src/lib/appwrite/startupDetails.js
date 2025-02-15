@@ -17,7 +17,7 @@ export class startupDetails {
     return result;
   }
 
-  async getAllStartups(query) {
+  async getAllStartups(query = null) {
     const buildQuery = [];
     if (query) {
       if (query.category) {
