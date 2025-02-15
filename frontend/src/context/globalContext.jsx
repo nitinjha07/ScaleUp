@@ -1,17 +1,24 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { startupDetailsServices } from "../lib/appwrite/startupDetails";
+import { startupOwnerServices } from "../lib/appwrite/startupOwner.appwrite";
 
 const GlobalContext = createContext(null);
 
 const GlobalProvider = ({ children }) => {
   const [startupList, setStartupList] = useState([]);
+  const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const fetchStartups = async () => {
+    const fetchUserAndStartups = async () => {
       try {
         setLoading(true);
+
+        const loggedInUser = await startupOwnerServices.get();
+        setUser(loggedInUser);
+        console.log("User:", loggedInUser);
+
         const startups = await startupDetailsServices.getAllStartups();
         setStartupList(startups);
       } catch (err) {
@@ -21,8 +28,12 @@ const GlobalProvider = ({ children }) => {
       }
     };
 
-    fetchStartups();
+    fetchUserAndStartups();
   }, []);
+
+  const getMyStartups = () => {
+    return startupList.filter((startup) => startup.ownerId === user?.$id);
+  };
 
   const addStartup = async (startupData) => {
     try {
@@ -43,6 +54,8 @@ const GlobalProvider = ({ children }) => {
     startupList,
     addStartup,
     removeStartup,
+    user,
+    getMyStartups,
     loading,
     error,
   };
