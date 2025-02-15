@@ -7,7 +7,7 @@ const AddStartup = () => {
   const navigate = useNavigate();
   const [step, setStep] = useState(1);
   const [loading, setLoading] = useState(false);
-  const totalSteps = 7;
+  const totalSteps = 9;
   const industries = [
     "Tech",
     "Fintech",
@@ -88,6 +88,14 @@ const AddStartup = () => {
     pitchDeck: null, // file
     financialProjections: null,
     productImages: [], // string[]
+
+    // Legal Documents
+    wordmarkTrademark: null,
+    companyRegistration: null,
+    shareholdersAgreement: null,
+    partnershipAgreement: null,
+    termsOfService: null,
+    privacyPolicy: null,
   });
 
   const handleChange = (e) => {
@@ -142,7 +150,7 @@ const AddStartup = () => {
       restFormData.pitchDeck = pitchDeck;
       restFormData.logo = logo;
       restFormData.photos = photos;
-      
+
       const startupDetails = await startupDetailsServices.addStartup(
         restFormData
       );
