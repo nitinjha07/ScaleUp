@@ -21,7 +21,7 @@ const MyStartups = () => {
       <header className="flex justify-between items-center mb-8">
         <h1 className="text-3xl font-bold">My Startups</h1>
         <button
-          onClick={() => navigate("/add-new-startup")}
+          onClick={() => navigate("/startup-owner/add-new-startup")}
           className="bg-blue-500 px-4 py-2 rounded-lg hover:bg-blue-600"
         >
           + Add New Startup

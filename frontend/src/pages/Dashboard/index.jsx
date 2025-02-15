@@ -54,7 +54,7 @@ const Dashboard = () => {
             </li>
             <li>
               <button
-                onClick={() => navigate("/profile")}
+                onClick={() => navigate("/startup-owner/profile")}
                 className="w-full text-left py-2 px-4 bg-gray-700 rounded hover:bg-gray-600"
               >
                 Profile
