@@ -7,7 +7,6 @@ const appwriteConf = {
   startupDB: import.meta.env.VITE_PUBLIC_STARTUP_DB,
   startupDBStartupDetails: import.meta.env
     .VITE_PUBLIC_STARTUP_DB_STARTUP_DETAILS,
-  
 
   // STORAGE CONFIG
   photoStorage: import.meta.env.VITE_PUBLIC_STORAGE_PHOTO,
