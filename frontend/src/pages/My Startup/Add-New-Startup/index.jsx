@@ -7,7 +7,7 @@ const AddStartup = () => {
   const navigate = useNavigate();
   const [step, setStep] = useState(1);
   const [loading, setLoading] = useState(false);
-  const totalSteps = 9;
+  const totalSteps = 7;
   const industries = [
     "Tech",
     "Fintech",
@@ -38,25 +38,24 @@ const AddStartup = () => {
 
   const [formData, setFormData] = useState({
     // Basic Information
-    name: "", // string - 100char
-    tagline: "", //string - 100 char
-    description: "", //string - 500 char
-    logo: null, // file
-    foundedYear: new Date().getFullYear(), // string
-    location: "", // string
+    name: "",
+    tagline: "",
+    description: "",
+    logo: null,
+    foundedYear: new Date().getFullYear(),
+    location: "",
 
     // Business Details
-    industry: "", // string
-    businessModel: "", // string
-    //
-    stage: "", // string 50 char
-    usp: "", // string 100 char
-    marketSize: "", // numerics in lakhs
+    industry: "",
+    businessModel: "",
+    stage: "",
+    usp: "",
+    marketSize: "",
     competitors: "",
 
-    // Financials // numbrs
-    fundingGoal: "", // in lakhs
-    valuation: "", // in carors
+    // Financials
+    fundingGoal: "",
+    valuation: "",
     revenue: "",
     equityOffered: "",
 
@@ -64,31 +63,30 @@ const AddStartup = () => {
     productName: "",
     productFeatures: "",
     techStack: "",
-    targetAudience: "", // string
-    demoVideo: "", // url
+    targetAudience: "",
+    demoVideo: "",
 
-    // TODO : Implement founder table
-    founders: [{ name: "", role: "", linkedin: "" }], //
-    teamSize: "", // number
+    // Team
+    founders: [{ name: "", role: "", linkedin: "" }],
+    teamSize: "",
     hiring: false,
 
     // Traction
     keyMetrics: "",
-    customers: "", // number
+    customers: "",
     partnerships: "",
 
     // Contact
     website: "",
     email: "",
-    phone: "", // string
+    phone: "",
     linkedin: "",
     twitter: "",
 
     // Documents
-    pitchDeck: null, // file
+    pitchDeck: null,
     financialProjections: null,
-    productImages: [], // string[]
-
+    productImages: [],
     // Legal Documents
     wordmarkTrademark: null,
     companyRegistration: null,

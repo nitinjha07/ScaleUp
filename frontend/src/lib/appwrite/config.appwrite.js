@@ -1,7 +1,7 @@
 import { Client } from "appwrite";
 
 const appwriteConf = {
-  frontendBase: import.meta.env.VITE_PUBLIC_ENDPOINT,
+  frontendBase:import.meta.env.VITE_PUBLIC_ENDPOINT,
   endpoint: "https://cloud.appwrite.io/v1",
   project: import.meta.env.VITE_PUBLIC_PROJECT,
   startupDB: import.meta.env.VITE_PUBLIC_STARTUP_DB,
