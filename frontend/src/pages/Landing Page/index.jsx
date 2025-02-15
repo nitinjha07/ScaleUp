@@ -1,14 +1,16 @@
 import { useGlobalProvider } from "../../context/globalContext";
+import { useNavigate } from "react-router-dom";
 
 const LandingPage = () => {
   const { startupList, loading } = useGlobalProvider();
-
+  const navigate = useNavigate();
   return (
     <div className="min-h-screen bg-gray-900 text-white">
       {/* Navbar */}
       <nav className="flex justify-between items-center px-6 py-4 bg-gray-800">
         <h1 className="text-2xl font-bold">🚀 Web3 Startups</h1>
-        <button className="bg-blue-600 px-4 py-2 rounded-lg hover:bg-blue-700 transition">
+        <button className="bg-blue-600 px-4 py-2 rounded-lg hover:bg-blue-700 transition"
+        onClick={() => navigate("/register/startup-owner")}>
           Connect Wallet
         </button>
       </nav>
@@ -26,13 +28,11 @@ const LandingPage = () => {
         </button>
       </header>
 
-      {/* Featured Startups Section */}
       <section className="px-10 py-10">
         <h3 className="text-3xl font-semibold text-center mb-6">
           Featured Startups
         </h3>
 
-        {/* Loading Indicator */}
         {loading ? (
           <p className="text-center text-gray-400">Loading startups...</p>
         ) : startupList.length === 0 ? (
