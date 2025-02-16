@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { startupOwnerServices } from "../../lib/appwrite/startupOwner.appwrite";
+import { startupOwnerServices } from "../../../lib/appwrite/startupOwner.appwrite";
 import { useNavigate } from "react-router-dom";
-import { useGlobalProvider } from "../../context/globalContext";
+import { useGlobalProvider } from "../../../context/globalContext";
 import { User } from "lucide-react";
 
 const Dashboard = () => {

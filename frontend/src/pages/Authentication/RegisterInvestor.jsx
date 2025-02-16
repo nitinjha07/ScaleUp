@@ -1,12 +1,14 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-
 const RegisterInvestor = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     password: "",
+    mobileNumber: "",
+    country: "",
+    authenticDocument: null,
   });
 
   const [error, setError] = useState("");
@@ -17,8 +19,12 @@ const RegisterInvestor = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleRegister = async (e) => {
+  const handleFileUpload = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.files[0] });
+  };
 
+  const handleRegister = async (e) => {
+    navigate("/investor/dashboard");
   };
 
   return (
@@ -58,10 +64,48 @@ const RegisterInvestor = () => {
           </div>
 
           <div>
+            <label className="block text-gray-400">Mobile Number</label>
+            <input
+              type="tel"
+              name="mobileNumber"
+              placeholder="Enter mobile number"
+              value={formData.mobileNumber}
+              onChange={handleChange}
+              required
+              className="w-full px-4 py-2 rounded-lg bg-gray-700 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-green-500"
+            />
+          </div>
+
+          <div>
+            <label className="block text-gray-400">Country</label>
+            <input
+              type="text"
+              name="country"
+              placeholder="Enter country"
+              value={formData.country}
+              onChange={handleChange}
+              required
+              className="w-full px-4 py-2 rounded-lg bg-gray-700 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-green-500"
+            />
+          </div>
+
+          <div>
+            <label className="block text-gray-400">Authentic Document</label>
+            <input
+              type="file"
+              name="authenticDocument"
+              onChange={handleFileUpload}
+              required
+              className="w-full bg-gray-700 text-white border border-gray-600 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-green-500"
+            />
+          </div>
+
+          <div>
             <label className="block text-gray-400">Password</label>
             <input
               type="password"
               name="password"
+              placeholder="Enter password"
               value={formData.password}
               onChange={handleChange}
               required
@@ -73,6 +117,7 @@ const RegisterInvestor = () => {
             type="submit"
             disabled={loading}
             className="w-full bg-green-600 hover:bg-green-700 px-4 py-2 rounded-lg font-bold transition disabled:opacity-50"
+            onClick={handleRegister}
           >
             {loading ? "Registering..." : "Register as Investor"}
           </button>

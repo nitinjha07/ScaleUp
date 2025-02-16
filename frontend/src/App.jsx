@@ -3,10 +3,11 @@ import LandingPage from "./pages/Landing Page";
 import GlobalProvider from "./context/globalContext";
 import RegisterStartupOwner from "./pages/Authentication/RegisterStartupOwner";
 import RegisterInvestor from "./pages/Authentication/RegisterInvestor";
-import Dashboard from "./pages/Dashboard/index";
-import MyStartups from "./pages/My Startup/index";
-import AddNewStartup from "./pages/My Startup/Add-New-Startup/index";
-import Profile from "./pages/Profile/index";
+import Dashboard from "./pages/user/Dashboard/index";
+import MyStartups from "./pages/user/My Startup/index";
+import AddNewStartup from "./pages/user/My Startup/Add-New-Startup/index";
+import Profile from "./pages/user/Profile/index";
+import InvestorDashboard from "./pages/investor/Dashboard";
 
 function App() {
   return (
@@ -21,8 +22,12 @@ function App() {
           <Route path="/register/investor" element={<RegisterInvestor />} />
           <Route path="/startup-owner/dashboard" element={<Dashboard />} />
           <Route path="/startup-owner/my-startups" element={<MyStartups />} />
-          <Route path="/startup-owner/add-new-startup" element={<AddNewStartup />} />
+          <Route
+            path="/startup-owner/add-new-startup"
+            element={<AddNewStartup />}
+          />
           <Route path="/startup-owner/profile" element={<Profile />} />
+          <Route path="/investor/dashboard" element={<InvestorDashboard />} />
         </Routes>
       </Router>
     </GlobalProvider>

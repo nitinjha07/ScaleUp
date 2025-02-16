@@ -9,6 +9,7 @@ const GlobalProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [myInvestedStartups, setMyInvestedStartups] = useState([]);
 
   useEffect(() => {
     const fetchUserAndStartups = async () => {
@@ -30,6 +31,8 @@ const GlobalProvider = ({ children }) => {
 
     fetchUserAndStartups();
   }, []);
+
+  
 
   const getMyStartups = () => {
     return startupList.filter((startup) => startup.ownerId === user?.$id);
