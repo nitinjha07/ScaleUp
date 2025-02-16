@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 const AddStartup = () => {
   const navigate = useNavigate();
   const [step, setStep] = useState(1);
+  const [loading, setLoading] = useState(false);
   const totalSteps = 9;
   const industries = [
     "Tech",
@@ -129,11 +130,43 @@ const AddStartup = () => {
   const prevStep = () => setStep((prev) => prev - 1);
 
   const handleSubmit = async () => {
+    setLoading(true);
     console.log("Submitting:", formData);
+
+    try {
+      const logo = await storageServices.uploadImage(formData.logo);
+      const photos = await Promise.all(
+        formData.photos.map(async (photo) => {
+          return await storageServices.uploadImage(photo);
+        })
+      );
+      const pitchDeck = await storageServices.uploadVideo(formData.pitchDeck);
+
+      const { founders, ...restFormData } = formData;
+
+      restFormData.pitchDeck = pitchDeck;
+      restFormData.logo = logo;
+      restFormData.photos = photos;
+
+      const startupDetails = await startupDetailsServices.addStartup(
+        restFormData
+      );
+
+      await Promise.all(
+        founders.map(async (founder) => {
+          await startupDetailsServices.addStartupFounder({
+            ...founder,
+            startupId: startupDetails?.$id,
+          });
+        })
+      );
+    } catch (error) {
+      throw new Error();
+    }
+
     alert("Startup added successfully!");
     navigate("/startups");
   };
-
   const ProgressBar = () => (
     <div className="w-full bg-gray-700 rounded-full h-2.5 mb-6">
       <div
