@@ -6,6 +6,8 @@
 
 With **ScaleUp**, startup founders can pitch their ideas, gain visibility, and secure funding, while investors can explore promising ventures and make informed investment decisions.  
 
+PPT: https://www.canva.com/design/DAGfOqb-cwQ/GF22RNAy9My3gUOOfBYmNQ/edit?utm_content=DAGfOqb-cwQ&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
+
 ---
 
 ## 👥 Team CodeKachori 🍽️  
