@@ -2,19 +2,18 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useGlobalProvider } from "../../context/globalContext";
 
-const RegisterInvestor = () => {
+const RegisterStartupOwnerBlockChain = () => {
   const { wallet } = useGlobalProvider();
   const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    country: "",
-    city: "",
-    postalCode: "",
+    orgName: "",
+    orgType: "",
+    orgCountry: "",
+    orgCity: "",
   });
 
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -27,22 +26,23 @@ const RegisterInvestor = () => {
     setLoading(true);
 
     try {
-      // Register investor
-      await wallet.registerInvestor(formData);
-      console.log("Register investor form data:", formData);
+      // Register startup owner
+      await wallet.registerStartupOwner(formData);
+      console.log("Register startup owner form data:", formData);
     } catch (err) {
-      console.error("Register investor error:", err);
-      setError("Failed to register investor. Please try again.");
+      console.error("Register startup owner error:", err);
+      setError("Failed to register startup owner. Please try again.");
     }
 
     setLoading(false);
   };
 
   return (
+    
     <div className="min-h-screen flex items-center justify-center bg-gray-900 text-white">
       <div className="bg-gray-800 p-8 rounded-lg shadow-lg w-full max-w-md">
         <h2 className="text-3xl font-bold text-center mb-6 text-green-400">
-          Register as Investor <br />{" "}
+          Register as Startup Owner <br />{" "}
           <span className="text-sm text-white">
             using address <br /> {wallet.address}
           </span>
@@ -52,12 +52,12 @@ const RegisterInvestor = () => {
 
         <form onSubmit={handleRegister} className="space-y-4">
           <div>
-            <label className="block text-gray-400">Full Name</label>
+            <label className="block text-gray-400">Organization Name</label>
             <input
               type="text"
-              name="name"
-              placeholder="Enter name"
-              value={formData.name}
+              name="orgName"
+              placeholder="Enter organization name"
+              value={formData.orgName}
               onChange={handleChange}
               required
               className="w-full px-4 py-2 rounded-lg bg-gray-700 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-green-500"
@@ -65,24 +65,12 @@ const RegisterInvestor = () => {
           </div>
 
           <div>
-            <label className="block text-gray-400">Email</label>
-            <input
-              type="email"
-              name="email"
-              placeholder="email@example.com"
-              value={formData.email}
-              onChange={handleChange}
-              required
-              className="w-full px-4 py-2 rounded-lg bg-gray-700 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-green-500"
-            />
-          </div>
-
-          <div>
-            <label className="block text-gray-400">Phone</label>
+            <label className="block text-gray-400">Organization Type</label>
             <input
               type="text"
-              name="phone"
-              value={formData.phone}
+              name="orgType"
+              placeholder="Enter organization type"
+              value={formData.orgType}
               onChange={handleChange}
               required
               className="w-full px-4 py-2 rounded-lg bg-gray-700 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-green-500"
@@ -93,8 +81,9 @@ const RegisterInvestor = () => {
             <label className="block text-gray-400">Country</label>
             <input
               type="text"
-              name="country"
-              value={formData.country}
+              name="orgCountry"
+              placeholder="Enter country"
+              value={formData.orgCountry}
               onChange={handleChange}
               required
               className="w-full px-4 py-2 rounded-lg bg-gray-700 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-green-500"
@@ -105,20 +94,9 @@ const RegisterInvestor = () => {
             <label className="block text-gray-400">City</label>
             <input
               type="text"
-              name="city"
-              value={formData.city}
-              onChange={handleChange}
-              required
-              className="w-full px-4 py-2 rounded-lg bg-gray-700 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-green-500"
-            />
-          </div>
-
-          <div>
-            <label className="block text-gray-400">Postal Code</label>
-            <input
-              type="text"
-              name="postalCode"
-              value={formData.postalCode}
+              name="orgCity"
+              placeholder="Enter city"
+              value={formData.orgCity}
               onChange={handleChange}
               required
               className="w-full px-4 py-2 rounded-lg bg-gray-700 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-green-500"
@@ -130,17 +108,17 @@ const RegisterInvestor = () => {
             disabled={loading}
             className="w-full bg-green-600 hover:bg-green-700 px-4 py-2 rounded-lg font-bold transition disabled:opacity-50"
           >
-            {loading ? "Registering..." : "Register as Investor"}
+            {loading ? "Registering..." : "Register as Startup Owner"}
           </button>
         </form>
 
         <p className="text-gray-400 text-center mt-4">
-          Own a startup?{" "}
+          Already an investor?{" "}
           <a
-            href="/register/startup-owner"
+            href="/register/investor"
             className="text-green-400 hover:underline"
           >
-            Register as Startup Owner
+            Register as Investor
           </a>
         </p>
       </div>
@@ -148,4 +126,4 @@ const RegisterInvestor = () => {
   );
 };
 
-export default RegisterInvestor;
+export default RegisterStartupOwnerBlockChain;

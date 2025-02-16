@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 const AddStartup = () => {
   const navigate = useNavigate();
   const [step, setStep] = useState(1);
+  const [loading, setLoading] = useState(false);
   const totalSteps = 9;
   const industries = [
     "Tech",

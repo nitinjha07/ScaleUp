@@ -1,0 +1,649 @@
+[
+  {
+    "inputs": [],
+    "stateMutability": "nonpayable",
+    "type": "constructor"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_investor",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "_orgAddress",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "_escrow",
+        "type": "address"
+      },
+      {
+        "internalType": "string",
+        "name": "_startupId",
+        "type": "string"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_amount",
+        "type": "uint256"
+      }
+    ],
+    "name": "addAgreement",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_investor",
+        "type": "address"
+      }
+    ],
+    "name": "getInvestorAgreements",
+    "outputs": [
+      {
+        "components": [
+          {
+            "internalType": "address",
+            "name": "investor",
+            "type": "address"
+          },
+          {
+            "internalType": "address",
+            "name": "escrow",
+            "type": "address"
+          },
+          {
+            "internalType": "address",
+            "name": "orgAddress",
+            "type": "address"
+          },
+          {
+            "internalType": "string",
+            "name": "startupId",
+            "type": "string"
+          },
+          {
+            "internalType": "uint256",
+            "name": "amount",
+            "type": "uint256"
+          },
+          {
+            "internalType": "bool",
+            "name": "isComplete",
+            "type": "bool"
+          }
+        ],
+        "internalType": "struct Users.Agreement[]",
+        "name": "",
+        "type": "tuple[]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_investorAddress",
+        "type": "address"
+      }
+    ],
+    "name": "getInvestorDetails",
+    "outputs": [
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      },
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_orgAddress",
+        "type": "address"
+      }
+    ],
+    "name": "getOrgDetails",
+    "outputs": [
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      },
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "getOwner",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "name": "inspectorDetails",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "inspectorAddress",
+        "type": "address"
+      },
+      {
+        "internalType": "string",
+        "name": "name",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "email",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "phone",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "country",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "city",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "postalCode",
+        "type": "string"
+      },
+      {
+        "internalType": "bool",
+        "name": "isKYCVerified",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "name": "investorAgreements",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "investor",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "escrow",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "orgAddress",
+        "type": "address"
+      },
+      {
+        "internalType": "string",
+        "name": "startupId",
+        "type": "string"
+      },
+      {
+        "internalType": "uint256",
+        "name": "amount",
+        "type": "uint256"
+      },
+      {
+        "internalType": "bool",
+        "name": "isComplete",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "name": "investorDetails",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "investorAddress",
+        "type": "address"
+      },
+      {
+        "internalType": "string",
+        "name": "name",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "email",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "phone",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "country",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "city",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "postalCode",
+        "type": "string"
+      },
+      {
+        "internalType": "bool",
+        "name": "isKYCVerified",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "name": "orgAgreements",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "investor",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "escrow",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "orgAddress",
+        "type": "address"
+      },
+      {
+        "internalType": "string",
+        "name": "startupId",
+        "type": "string"
+      },
+      {
+        "internalType": "uint256",
+        "name": "amount",
+        "type": "uint256"
+      },
+      {
+        "internalType": "bool",
+        "name": "isComplete",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "name": "orgDetails",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "orgAddress",
+        "type": "address"
+      },
+      {
+        "internalType": "string",
+        "name": "orgName",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "orgType",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "orgCountry",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "orgCity",
+        "type": "string"
+      },
+      {
+        "internalType": "bool",
+        "name": "isOrgVerified",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "name": "pendingRegistrationsForInvestor",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "investorAddress",
+        "type": "address"
+      },
+      {
+        "internalType": "string",
+        "name": "name",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "email",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "phone",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "country",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "city",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "postalCode",
+        "type": "string"
+      },
+      {
+        "internalType": "bool",
+        "name": "isKYCVerified",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "name": "pendingRegistrationsForOrg",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "orgAddress",
+        "type": "address"
+      },
+      {
+        "internalType": "string",
+        "name": "orgName",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "orgType",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "orgCountry",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "orgCity",
+        "type": "string"
+      },
+      {
+        "internalType": "bool",
+        "name": "isOrgVerified",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_inspectorAddress",
+        "type": "address"
+      },
+      {
+        "internalType": "string",
+        "name": "_name",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_email",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_phone",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_country",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_city",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_postalCode",
+        "type": "string"
+      }
+    ],
+    "name": "registerInspector",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "_name",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_email",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_phone",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_country",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_city",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_postalCode",
+        "type": "string"
+      }
+    ],
+    "name": "registerInvestor",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "orgName",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "orgType",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "orgCountry",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "orgCity",
+        "type": "string"
+      }
+    ],
+    "name": "registerOrg",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  }
+]
