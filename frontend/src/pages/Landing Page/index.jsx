@@ -1,18 +1,73 @@
 import { useGlobalProvider } from "../../context/globalContext";
 import { useNavigate } from "react-router-dom";
-
+import { useEffect } from "react";
 const LandingPage = () => {
-  const { startupList, loading } = useGlobalProvider();
+  const { startupList, loading, wallet } = useGlobalProvider();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    // if (wallet.address) {
+    //   // console.log
+    //   if (!wallet.loading && wallet.isRegisteredAsUser) {
+    //     navigate("/register/investor");
+    //   }
+    // }
+  }, [wallet]);
+
   return (
     <div className="min-h-screen bg-gray-900 text-white">
       {/* Navbar */}
       <nav className="flex justify-between items-center px-6 py-4 bg-gray-800">
         <h1 className="text-2xl font-bold">🚀 Web3 Startups</h1>
-        <button className="bg-blue-600 px-4 py-2 rounded-lg hover:bg-blue-700 transition"
-        onClick={() => navigate("/register/startup-owner")}>
-          Connect Wallet
-        </button>
+        {wallet.loading ? (
+          <button
+            className="bg-gray-300 px-4 py-2 rounded-lg  cursor-not-allowed"
+            disabled={true}
+          >
+            Loading
+          </button>
+        ) : wallet.isRegisteredAsUser ? (
+          <button
+            className="bg-blue-600 px-4 py-2 rounded-lg hover:bg-blue-700 transition"
+            // onClick={() => navigate("/register/startup-owner")}
+            onClick={() => {
+              wallet.connectWallet();
+            }}
+          >
+            Portfolio
+          </button>
+        ) : wallet.isRegisteredAsStartupOwner ? (
+          <button
+            className="bg-blue-600 px-4 py-2 rounded-lg hover:bg-blue-700 transition"
+            // onClick={() => navigate("/register/startup-owner")}
+            onClick={() => {
+              wallet.connectWallet();
+            }}
+          >
+            Dashboard
+          </button>
+        ) : wallet.address ? (
+          <button
+            className="bg-blue-600 px-4 py-2 rounded-lg hover:bg-blue-700 transition"
+            // onClick={() => navigate("/register/startup-owner")}
+            onClick={() => {
+              navigate("/register/investor");
+            }}
+          >
+            Register
+          </button>
+        ) : (
+          <button
+            className="bg-blue-600 px-4 py-2 rounded-lg hover:bg-blue-700 transition"
+            // onClick={() => navigate("/register/startup-owner")}
+            onClick={() => {
+              wallet.connectWallet();
+            }}
+          >
+            Connect Wallet
+          </button>
+        )}
+        {/* </button> */}
       </nav>
 
       {/* Header Section */}
