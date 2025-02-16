@@ -1,4 +1,4 @@
-import { useGlobalProvider } from "../../context/globalContext";
+import { useGlobalProvider } from "../../../context/globalContext";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 

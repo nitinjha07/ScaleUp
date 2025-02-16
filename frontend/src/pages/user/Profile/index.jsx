@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { useGlobalProvider } from "../../context/globalContext";
-import { startupOwnerServices } from "../../lib/appwrite/startupOwner.appwrite";
+import { useGlobalProvider } from "../../../context/globalContext";
+import { startupOwnerServices } from "../../../lib/appwrite/startupOwner.appwrite";
 import { useNavigate } from "react-router-dom";
 
 const Profile = () => {

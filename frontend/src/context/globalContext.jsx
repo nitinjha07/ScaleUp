@@ -23,6 +23,7 @@ const GlobalProvider = ({ children }) => {
   const [isRegisteredAsStartupOwner, setIsRegisteredAsStartupOwner] =
     useState(false);
   const [walletLoading, setWalletLoading] = useState(true);
+  const [myInvestedStartups, setMyInvestedStartups] = useState([]);
 
   useEffect(() => {
     loadWallet();
